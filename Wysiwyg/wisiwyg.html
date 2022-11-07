@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Wysiyg</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container-fluid mx-auto">   
+            <div class="row">
+                <header class="col-md-12 text-center">
+                    <h1>Mon Projet Wysiwyg</h1>  
+                </header>
+            
+            </div>
+            
+        
+            <div class="row border">
+                <fieldset class="col-sm-12">
+                    <div class="row">
+                        
+                        <div class="col-md-10">
+                        <legend>Édition de la page</legend>
+                    </div>
+                    </div>
+                    <hr class="border">
+
+                    <div class="boxType row">
+                        
+                        <div class="col-md-4 pt-3 text-center">
+                            <label>Titre</label>
+                        <input class="OnchangeRefresh" id="inputTitreWysiwyg" type="text" placeholder="Le titre à changer"/>    
+                        </div>
+
+                        <div class="col-md-4 pt-3 text-center">
+                        <label>Couleur du Titre</label>
+                        <input class="OnchangeRefresh" id="inputColorTitreWysiwyg" type="color" placeholder="Le titre à changer"/>    
+                        </div>
+
+                        <div class="col-md-4 pt-3 text-center">
+                        <label for="inputSizeTitreWysiwyg">Taille du Titre</label>
+                        <input class="OnchangeRefresh" id="inputSizeTitreWysiwyg" type="range" value="60" min="21" max="200" placeholder="Taille en Pixel de 21 à 200"/>    
+                        </div>
+
+                        
+                            <div class="col-md-4 text-center pt-3">
+                                <label>Alignement du texte :</label>
+                                
+                            </div>
+                            <div class="col-md-2 text-center pt-3">
+                                <label>Gauche</label>
+                                <input type="radio" class="OnchangeRefresh" id="textAlignLeft">
+                            </div>
+                            <div class="col-md-2 text-center pt-3">
+                                <label>Centré</label>
+                                <input type="radio" class="OnchangeRefresh" id="textAlignCenter">
+                            </div>
+                            <div class="col-md-2 text-center pt-3">
+                                <label>Droite</label>
+                                <input type="radio" class="OnchangeRefresh" id="textAlignRight">
+                            </div>
+                            
+                        
+                    </div>
+
+                    <hr class="border">
+
+                    <div class="boxType row">
+                        <div class="col-md-6 pt-3 text-center">
+                            <label>image</label>
+                            <input class="OnchangeRefresh" id="inputimgWysiwyg" type="text" placeholder="L'image à changer"/>  
+                        </div> 
+                        <div class="col-md-6 pt-3 text-center">
+                            <label>Largeur max</label>
+                            <input value="300" type="range" min="15" max="1200" id="imgMaxWidth" class="OnchangeRefresh">
+                        </div>
+                        
+                    </div>
+
+                    <hr class="border">
+
+                    <div class="row">
+                        <div class="col-md-12 pt-3 text-center">
+                            <div class="row">
+                                <label class="col-md-12 text-center" for="inputContentWysiwyg">Contenu</label>
+                            </div>
+                            <textarea class="OnchangeRefresh col-md-10" id="inputContentWysiwyg" type="text" placeholder="Le Contenu à changer"></textarea>   
+                        </div>  
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-10 col-sm-0"></div>
+                        <div class="col-md-2 col-sm-12 text-center pb-4">
+                            <button id="btnGenererWysiwyg" onclick="RemplaceLeTitre()">Remplacer</button>
+                        </div>
+                    </div>
+
+                    
+                </fieldset>
+
+            <!-- FIN DE LA ZONE D'ÉDITION-->
+            
+            </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 id="titreWysiwigResultat">
+                        
+                        </h2>
+                    </div>
+                    
+                </div>
+
+                <div class="row">
+                    <img src="" id="imgWysiwigResultat">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="textWysiwigResultat">
+                            Mon texte à changer
+                        </p>
+                    </div>
+                   
+                </div>
+            
+        </div>
+        <script src="wysiwig.js"></script>
+    </body>
+</html>
