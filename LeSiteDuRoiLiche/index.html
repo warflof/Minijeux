@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    
+<!--
+  ------------------------------------------------------------------------------------
+
+  HEADER                                                   
+
+  ------------------------------------------------------------------------------------
+-->
+    
+    <div class="header">
+      <img class="fullwidth" src="img/Lich_King_Key_Art.jpg">
+      <h1 id="title"><a href="#title">Le site du Roi Liche</a></h1>
+        
+
+      <nav>
+            <a href="#who"><button class="button menu">Qui je suis</button></a>
+            <a href="myProject"><button class="button menu">Mon Projet</button></a>
+            <button class="button menu">Mes Passions</button>
+      </nav>
+
+      <div class="discoveryButton">
+        <button id="myBtn" class="button button1">
+        <p id="joined">Rejoignez le fléau !</p>
+        </button>
+
+        <button id="mySecondBtn" class="button hide">
+          <p id="joined">Bienvenue dans le Fléau !</p>
+        </button>
+        </div>
+
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+              <form id="formJoin" class="centeredBlock form">
+                <h3 class="formTitle">Rejoindre le fléau en un clic !</h3>
+                <label>
+                  Nom : 
+                  <input type="text"><br>
+                </label>
+                <label>
+                  Prénom : 
+                  <input type="text"><br>
+                </label>
+                <label>
+                  Adresse Mail : 
+                  <input type="text"><br>
+                </label>
+                <br><button id="finalize" value="Je rejoins le Fléau">Je rejoins le Fléau</button>
+              </form>
+
+          </div>
+        </div>
+      </div>
+
+      
+      
+<!-- 
+  ------------------------------------------------------------------------------------
+
+  SECTION QUI JE SUIS                                                   
+
+  ------------------------------------------------------------------------------------
+-->
+    
+
+      <div class="centeredBlock whosection">
+        <h2 id="who">Qui je suis</h2>
+        <p class="explanation whoAmI">
+          De mon ancien nom Ner'zhul, je faisais sommité dans le milieu du chamanisme,
+          à la suite d'un rachat par la <span>Légion Ardente</span>, j'ai eu l'occasion de collaborer
+          avec <span>Gul'dan</span> et d'instaurer la corruption de la nation Orc.</p> 
+
+            
+        <p class="explanation whoAmI">  
+          À la fin de seconde guerre, j'ai eu l'occasion d'oeuvré à la réouverture
+          du <span>Portail des Ténèbres</span>. Créant ainsi un espace migratoire et 
+          commercial entre Draenor et Azeroth.
+        </p>
+         
+        <p class="explanation whoAmI">
+          À la conclusion de ces projets, j'atteignis le stade spirituel a l'aide
+           de mon Mentor <span>Kil'Jaeden</span>. Je créais ainsi ma propre entreprise
+          en étendant mon pouvoir depuis mon trône de glace social basé en Norfendre.
+          Ainsi j'étends mon influence auprès de mes clients, et accelere les processus
+          de transformation et de contrôle dans la non-mort grâce au <span>fléau</span>.
+          <!--Mettre le lien sur le mot fléau-->
+          <br>
+          Ce qui me vaut aujourd'hui le titre de 
+          <h3 id="LK">*Roi Liche*</h3>
+      </p>
+          
+
+        </p>
+      </div>
+
+      <hr style="margin : 0px;">
+      <!-- 
+  ------------------------------------------------------------------------------------
+
+  SECTION MON PROJET                                                  
+
+  ------------------------------------------------------------------------------------
+-->
+
+
+<div id="myProject">
+  <h2>Mon Projet</h2>
+  <div class="block stair">
+    <div class="card fusion">
+      <h3 class="projectSubtitle">Ma fusion avec Arthas de Menethil</h3>
+    </div>
+    <div class="card expand">
+      <h3 class="projectSubtitle">Répendre le Fléau</h3>
+    </div>
+    <div class="card company">
+      <h3 class="projectSubtitle">Notre Entreprise</h3>
+    </div>
+  </div>
+</div>
+
+      
+    
+
+  </body>
+  <script src="fleau.js"></script>
+</html>
+
+<!-- PSEUDO DO CODE
+
+  Soit M notre mot dont on cherche la longueur
+  Soit C notre compteur égal à 0
+  Soit CL notre compte de lettre
+  Calculer CL += C
+  Retourner CL
+
+
+  let firstNumber = 25;
+  let secondNumber = 52;
+
+  firstNumber = firstNumber + secondNumber;
+  secondNumber = firstNumber - secondeNumber;
+  firstNumber = secondNumber - firstNumber;
+  
+
+
+
+
+-->

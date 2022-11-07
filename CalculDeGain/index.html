@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>FreelanceMoney</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    </head>
+    <body>
+        <div class="container text-center mt-5 mb-5">
+            <header>
+                <h1>FreelanceMoney Simulator</h1>
+            </header>
+        </div>
+      
+        
+        <div class="container border rounded">
+        <form class="formCalcul" id="formCalculGain">
+            
+
+            <div class="sectionCalcul pricing col-md-10 mt-5">
+                <fieldset class="form-container">
+                    <legend class="text-center mb-5">Vos Tarifs</legend>
+                    <div class="form-field">
+                        <label>Taux Horaire : </label>
+                        <input id="resultTxHoraire" value="" class="form-control onChangeRefresh" name="tauxHoraire" type="number" placeholder="Ex: 70">
+                    </div>
+                    <div class="form-field">
+                        <label>TJM : </label>
+                        <input id="resultTJM" value="" class="form-control onChangeRefresh" name="tjm" type="number" placeholder="Ex: 490">
+                    </div>
+                    <div class="form-field">
+                        <label>Extras : </label>
+                        <input class="form-control onChangeRefresh" name="extras" type="number" placeholder="Ex: 50">
+                    </div>
+                </fieldset>
+            </div>
+    
+
+            <div class="sectionCalcul qte col-md-10">
+                <fieldset class="form-container mt-5">
+                    <legend class="text-center mb-5">Quantités</legend>
+                    <div class="form-field">
+                        <label>Heures / Jours : </label>
+                        <input class="form-control onChangeRefresh" name="qteTauxHoraire" type="number" placeholder="Ex: 7">
+                    </div>
+                    <div class="form-field">
+                        <label>Jours / Mois : </label>
+                        <input class="form-control onChangeRefresh" name="qteTJM" type="number" placeholder="Ex: 20">
+                    </div>
+                    <div class="form-field">
+                        <label>Nombre d'extras / Mois : </label>
+                        <input class="form-control onChangeRefresh" name="qteExtras" type="number" placeholder="Ex: 50">
+                    </div>
+                </fieldset>
+            </div>
+            
+            
+
+            <div class="sectionCalcul charges col-md-10 mt-5 text-center">
+                <fieldset class="form-container">
+                    <legend class="text-center mb-5">Charges</legend>
+                    <div class="form-field">
+                        <label>Pourcentage de charges : </label>
+                        <input class="form-control" name="charges" type="number" placeholder="Ex: 22%">
+                    </div>
+                </fieldset>
+            </div>
+    
+
+            <div class="sectionCalcul validation col-md-10 text-center mt-5">
+                <input id="button" onclick="CalculGain()" type="submit" value="Calculer">
+            </div>
+    
+
+            <div class="sectionCalcul result col-md-10 mt-5">
+                <fieldset class="form-container">
+                    <legend class="text-center mb-5">Résultats</legend>
+                    <div class="form-field">
+                        <label>Montant Brut : </label>
+                        <p id="resultatBrut"> X €</p>
+                    </div>
+                    <div class="form-field">
+                        <label>TJM : </label>
+                        <p> X €</p>
+                    </div>
+                    <div class="form-field">
+                        <label>Extras : </label>
+                        <span></span>
+                    </div>
+                </fieldset>
+            </div>
+
+        </form>
+        </div>
+        
+        
+        <script src="freelanceMoney.js" async defer></script>
+    </body>
+</html>
