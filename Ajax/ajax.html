@@ -7,13 +7,63 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>AJAX TEST</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="ajax.css">
     </head>
     <body>
+        <h1>
+            AJAX
+        </h1>
+
+        <button onclick="ShowUsers()">Afficher utilisateurs</button>
+        <div id="AllUsers">
+            <i>Les utilisateurs seront affichés ici.</i>
+        </div>
+
         
-        <script src="ajax.js" async defer></script>
+    
+            <input onclick="deJSONiny()"id="button" type="button" value="Click to Populate SELECT with JSON" />
+            
+        
+            <!--The SELECT element.-->
+            <select id="select">
+                <option id="streetName" value="">-- Select --</option>
+            </select>
+        
+        
+        <script>  
+        // JSON.
+            
+            let selectValue = document.getElementById('select');
+            let streetSelect = document.getElementById('streetName');
+            
+            function deJSONiny() {
+                selectValue.innerText = "";
+                const json = '[{"id":33,"name":"Boni Avenue"},{"id":34,"name":"Shaw Boulevard"},{"id":35,"name":"Rue Madeleine"},{"id":36,"name":"Shaw Boulevard"}]';
+                let deJSONiny = JSON.parse(json);   
+                console.log(deJSONiny);
+
+                deJSONiny.forEach(element => {
+                    
+                    let selectChoice = document.createElement('option');
+                    selectChoice.dataset.select = element;
+                    selectChoice.innerText = element.name;
+                    selectValue.appendChild(selectChoice);
+                });
+
+            
+
+            }
+
+
+
+        </script>
+        
+        </code>
+
+        
+       <!-- <script src="ajax.js" async defer></script> --> 
     </body>
 </html>
