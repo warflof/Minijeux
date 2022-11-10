@@ -7,28 +7,22 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>AJAX TEST</title>
+        <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="ajax.css">
+        <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1>
-            AJAX
-        </h1>
-
-        <button onclick="ShowUsers()">Afficher utilisateurs</button>
-        <div id="AllUsers">
-            <i>Les utilisateurs seront affichés ici.</i>
-        </div>   
-           
-        
-        
        
+        <input onclick="deJSONiny()"id="button" type="button" value="Click to Populate SELECT with JSON" />
+            
         
-       
-
+            <!--The SELECT element.-->
+            <select id="select">
+                <option id="streetName" value="">-- Select --</option>
+            </select>
         
-       <script src="ajax.js" async defer></script>
+        <script src="script.js" async defer></script>
     </body>
 </html>
+

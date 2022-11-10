@@ -1,45 +1,34 @@
 function ShowUsers(){
-    const xhr = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     //Appel la requête JS
-    xhr.open('GET', 'http://reqres.in/api/users?page=1');
+    request.open('GET', 'https://reqres.in/api/users?page=1');
 
     //Event d'appel au clic du bouton
-    xhr.addEventListener('readystatechage', function() {
+    request.addEventListener('readystatechange', function() {
         //Si le lien est ok et que tout est envoyé, alors on affiche les données
-        if(xhr.readyState === 4) {
-            if(xhr.status === 200) {
-                console.log("Response = " + xhr.response);
-                
-            }
-            console.log("Response = " + xhr.response);
+        if(request.readyState === 4) {
+              if(request.status === 200) {
+                  console.log("Response = " + request.response);
+                  const object = JSON.parse(request.response);
+                  
+                  let myhtml = "";
+                  object.data.forEach(element => {
+
+                    myhtml += '<div><p>'+element.first_name+' '+element.last_name+' </p></div>'
+                    
+                  });
+                  document.getElementById("AllUsers").innerHTML = myhtml;
+              }
+              else if(request.status === 301) {
+                alert("L'url de votre requête n'est pas bonne");
+              }
+              else{
+                alert('Une erreur est survenue');
+              }
+            console.log("Response = " + request.response);
         };
     });
-    xhr.send();
+    request.send();
 };
 
-const students = [
-    {
-      name: 'Paul',
-      age: 15,
-      scores: [
-        {matiere: 'Maths', note: 10},
-        {matiere: 'Français', note: 12},
-        {matiere: 'Anglais', note: 14},
-      ]
-    }, 
-    {
-      name: 'Marie',
-      age: 14,
-      scores: [
-        {matiere: 'Maths', note: 15},
-        {matiere: 'Français', note: 9},
-        {matiere: 'Anglais', note: 10},
-      ]
-    },
-]
 
-let JSONiny = JSON.stringify(students);
-console.log(JSONiny);
-
-let DeJSONiny = JSON.parse(JSONiny);
-console.log(DeJSONiny[0].name);
