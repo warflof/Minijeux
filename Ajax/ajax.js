@@ -14,7 +14,8 @@ function ShowUsers(){
                   let myhtml = "";
                   object.data.forEach(element => {
 
-                    myhtml += '<div><p>'+element.first_name+' '+element.last_name+' </p></div>'
+                    myhtml += '<div><img src="'+element.avatar+'"/><div><p>'+element.first_name+' '
+                              +element.last_name+'</p></div>'
                     
                   });
                   document.getElementById("AllUsers").innerHTML = myhtml;
