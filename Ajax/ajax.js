@@ -1,8 +1,3 @@
-function ShowUsers(){
-  const nbPages = document.getElementById('pages').value;
-  getUsers(nbPages);
-
-};
 
 /*
             let myhtml = "";
@@ -43,17 +38,38 @@ function getUsers(numeroPage){
 
     request.send();
 
-}
+};
 
-function setUsersInPages(object){
-  let myhtml = "";
-     object.data.forEach(element => {
+function setUsersInPages(listUsers){
+    let myhtml = "";
+    listUsers.data.forEach(element => {
+          myhtml += '<div><img src="'+element.avatar+'"/><p>'+element.first_name+' '+element.last_name+'</p></div>'
+    });
+    document.getElementById("AllUsers").innerHTML = myhtml;
 
-      myhtml += '<div><img src="'+element.avatar+'"/><div><p>'+element.first_name+' '
-                 +element.last_name+'</p></div>'
-      
-                 document.getElementById("AllUsers").innerHTML = myhtml;
-                    
-      });
-}
+    //On créer le nb de pages
+    let nbPages = listUsers.total_pages;
+    let currentPage = listUsers.page;
+
+    let htmlPagination = "";
+    for (let i = 1; i <=nbPages; i++) {
+      if(i == currentPage){
+        htmlPagination += '<button class="btn active" disabled>'+i+'</button>'
+      }
+      else {
+        htmlPagination += '<button class="btn" onclick="getUsers('+i+')">'+i+'</button>'
+
+      }
+    }
+
+    document.getElementById("pagination").innerHTML = htmlPagination;
+
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+  getUsers(1);
+});
+  
+
+
 

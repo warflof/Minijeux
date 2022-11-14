@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -17,15 +13,15 @@
             AJAX
         </h1>
 
-        <div>
-            <input type="number" id="pages"/>
-
-        </div>
-        <button onclick="ShowUsers()">Afficher utilisateurs</button>
-        <div id="AllUsers">
+       
+        <div class="users-container" id="AllUsers">
             <i>Les utilisateurs seront affichés ici.</i>
         </div>   
-           
+        
+        <div id="pagination">
+
+
+        </div>
         
         
        
@@ -33,6 +29,8 @@
        
 
         
-       <script src="ajax.js" async defer></script>
+       <script src="ajax.js"></script>
     </body>
 </html>
+
+<!-- DataTable = Plugin gérant les tables en lowcode -->
