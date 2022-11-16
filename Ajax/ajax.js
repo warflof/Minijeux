@@ -1,22 +1,10 @@
-
-/*
-            let myhtml = "";
-                  object.data.forEach(element => {
-
-                    myhtml += '<div><img src="'+element.avatar+'"/><div><p>'+element.first_name+' '
-                              +element.last_name+'</p></div>'
-
-                  document.getElementById("AllUsers").innerHTML = myhtml;
-                    
-                  });
-*/
 function getUsers(numeroPage){
-  const request = new XMLHttpRequest();
-  const url = 'https://reqres.in/api/users?page='+numeroPage
-  request.open('GET', url);
+    const request = new XMLHttpRequest();
+    const url = 'https://reqres.in/api/users?page='+numeroPage
+    request.open('GET', url);
 
-  request.addEventListener('readystatechange', function() {
-    //Si le lien est ok et que tout est envoyé, alors on affiche les données
+    request.addEventListener('readystatechange', function() {
+      //Si le lien est ok et que tout est envoyé, alors on affiche les données
     if(request.readyState === 4) {
           if(request.status === 200) {
               console.log("Response = " + request.response);

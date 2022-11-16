@@ -34,3 +34,29 @@
 </html>
 
 <!-- DataTable = Plugin gérant les tables en lowcode -->
+<!-- Lors de l'envoi d'une requête POST, on défini plusieurs choses :
+
+        1 - Mon URL
+            Exemple : const url = 'https://reqres.in/api/users';
+
+        2 - Ma méthode
+            Exemple : const methode = 'POST' (Ou GET ou DELETE, etc.) 
+                        (Se référer aux méthodes de l'API)  
+
+        3 - Mon content-type
+            Exemple : const contentType = "application/json;charset=UTF-8";
+                        (Se référer au 'mime type' des fichiers à envoyer).
+
+        4 - Le contenu de ma requête (mes paramètres)
+            Exemple : let myForm = new FormData();
+                      myForm.append('name', 'Gaston');
+                      myForm.append('job', 'Dératiseur');
+                      var json = convertToJson(myForm);
+
+                      function convertToJson(datas){
+                        var object = {};
+                        datas.foreach((value, key) => object[key] = value);
+                        return JSON.stringify(object);
+                      }
+
+-->
