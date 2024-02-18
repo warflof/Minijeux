@@ -13,6 +13,7 @@ async function displayPokemon() {
     await getPokemon(randomPokemon);
     
     document.getElementById("nom-Pokemon").innerText = " ";
+    document.getElementById("plus-Mid-Text").innerText = " ";
    
     let pokemon = document.createElement("div");
     
@@ -21,6 +22,11 @@ async function displayPokemon() {
     document.getElementById("nom-Pokemon").append(pokemon);
     
     pokeImg = document.getElementById("pokemon-img").src = pokedex[randomPokemon]["img"];
+
+    let plusMidText = document.createElement("p");
+    plusMidText.className = "font-black text-6xl text-slate-50";
+    plusMidText.innerText = "+";
+    document.getElementById("plus-Mid-Text").append(plusMidText);
 
     getAdjectif(getRandomAdjectifNumber(maxAdj));
 
@@ -45,7 +51,7 @@ async function getAdjectif(num) {
     
     let adjectifName = adjectif[num];
      
-    document.getElementById("adjectif").innerText = " + " + adjectifName;   
+    document.getElementById("adjectif").innerText = adjectifName;   
 
     console.log(adjectif);
 
