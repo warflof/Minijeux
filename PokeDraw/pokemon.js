@@ -1,12 +1,24 @@
+// Appel JSON
+let adjectif = null;
+let maxAdj = 0;
+
+async function GetFile(){
+    let file = await fetch('./adjectif.json');
+    let json = await file.json();
+
+    console.log(json);
+    adjectif = json;
+    maxAdj = json.length;
+}
+GetFile();
+
+
 
 const pokemonCount = 151;
-const maxAdj = 6;
 var pokedex = {};
-var adjectif = {};
 
 
 
-//window.onload = 
 async function displayPokemon() {
     pokedex = {};
     const randomPokemon = getRandomPokeNumber(pokemonCount);
@@ -33,6 +45,7 @@ async function displayPokemon() {
     console.log(pokedex);
 } 
 
+
 async function getPokemon(num) {
     let url = "https://tyradex.vercel.app/api/v1/pokemon/" + num.toString();
 
@@ -46,25 +59,17 @@ async function getPokemon(num) {
 }
 
 async function getAdjectif(num) {
-    let adj = await fetch(' ./adjectif.json')
-    let adjectif = await adj.json();
     
     let adjectifName = adjectif[num];
      
     document.getElementById("adjectif").innerText = adjectifName;   
 
-    console.log(adjectif);
+    console.log(adjectif[num]);
 
-    const array = [];
-
-    for (var i in  adjectif) {
-        array.push([i, adjectif[i]]);
-    }
-
-    return array.length;
 }
 
 
+// RANDOM FUNCTION
 
 function getRandomPokeNumber(max) {
     pokemonNumber = Math.floor(Math.random() * max);
