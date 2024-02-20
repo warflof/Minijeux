@@ -2,11 +2,13 @@
 let adjectif = null;
 let maxAdj = 0;
 
+let timerDisplay = null;
+let nIntervalId;
+
 async function GetFile(){
     let file = await fetch('./adjectif.json');
     let json = await file.json();
 
-    console.log(json);
     adjectif = json;
     maxAdj = json.length;
 }
@@ -26,7 +28,8 @@ async function displayPokemon() {
     
     document.getElementById("nom-Pokemon").innerText = " ";
     document.getElementById("plus-Mid-Text").innerText = " ";
-   
+    document.getElementById("timerCountHidden").innerText = " ";
+       
     let pokemon = document.createElement("div");
     
     pokemon.id = randomPokemon;
@@ -42,8 +45,77 @@ async function displayPokemon() {
 
     getAdjectif(getRandomAdjectifNumber(maxAdj));
 
-    console.log(pokedex);
+     // Retire Hidden des TimersButtons 
+     let timerButton30 = document.getElementById("timerStartButton30");
+     timerButton30.classList.remove("hidden"); 
+ 
+     let timerButton60 = document.getElementById("timerStartButton60");
+     timerButton60.classList.remove("hidden"); 
+ 
+     let timerButton180 = document.getElementById("timerStartButton180");
+     timerButton180.classList.remove("hidden"); 
+
+     let cross = document.getElementById("cross");
+     cross.classList.remove("hidden")
+
+     
+
 } 
+
+function CloseTimers(){
+    let timerButton30 = document.getElementById("timerStartButton30");
+     timerButton30.classList.add("hidden"); 
+ 
+     let timerButton60 = document.getElementById("timerStartButton60");
+     timerButton60.classList.add("hidden"); 
+ 
+     let timerButton180 = document.getElementById("timerStartButton180");
+     timerButton180.classList.add("hidden"); 
+
+     let cross = document.getElementById("cross");
+     cross.classList.add("hidden")
+}
+
+function SetTimer(departMinutes) {
+    
+    let temps = departMinutes * 60;
+
+    let timerButton30 = document.getElementById("timerStartButton30");
+    timerButton30.classList.add("hidden"); 
+
+    let timerButton60 = document.getElementById("timerStartButton60");
+    timerButton60.classList.add("hidden"); 
+
+    let timerButton180 = document.getElementById("timerStartButton180");
+    timerButton180.classList.add("hidden"); 
+
+    let cross = document.getElementById("cross");
+    cross.classList.add("hidden");
+
+    clearInterval(nIntervalId);
+
+    const delay = 1000;
+
+    timerDisplay = document.createElement("div");
+    timerDisplay.id = "timer";
+    timerDisplay.className = "font-black text-6xl text-slate-50 hidden";
+    document.getElementById("timerCountHidden").appendChild(timerDisplay);
+
+    
+    nIntervalId = setInterval(() => {
+        let minutes = parseInt(temps / 60, 10);
+        let secondes = parseInt(temps % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        secondes = secondes < 10 ? "0" + secondes : secondes;
+        timerDisplay.innerText = `${minutes}:${secondes}`;
+        temps = temps <= 0 ? 0 : temps -1
+    }, delay)
+
+
+    document.getElementById("timer").classList.remove("hidden");    
+}
+
 
 
 async function getPokemon(num) {
@@ -64,7 +136,6 @@ async function getAdjectif(num) {
      
     document.getElementById("adjectif").innerText = adjectifName;   
 
-    console.log(adjectif[num]);
 
 }
 

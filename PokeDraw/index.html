@@ -38,8 +38,17 @@
 
     <!-- Bouton du lancement aléatoire -->
 
-        <div class="flex mx-auto h-32 w-32 content-center justify-center items-end">       
-            <button class="mx-8 px-8 py-4 rounded-md my-auto border-8 border-solid text-slate-50 shadow-inner transition ease-in delay-100 hover:-translate-y-1 hover:scale-110 duration-200 text-2xl font-bold" onclick="displayPokemon()">ROLL</button>
+        <div class="flex flex-col py-4 mx-auto w-max content-center justify-center items-center gap-4">
+            <div id="timerDisplay" class="flex flex-row"> <!--onmouseover="over()"-->       
+                <button  id="timerStartButton30" class="mx-8 px-8 py-4 rounded-md my-auto border-8 border-solid text-slate-50 shadow-inner transition ease-in delay-100 hover:-translate-y-1 hover:scale-110 duration-200 text-2xl font-bold hidden" onclick="SetTimer(30)">TIMER 30</button>
+                <button  id="timerStartButton60" class="mx-8 px-8 py-4 rounded-md my-auto border-8 border-solid text-slate-50 shadow-inner transition ease-in delay-100 hover:-translate-y-1 hover:scale-110 duration-200 text-2xl font-bold hidden" onclick="SetTimer(60)">TIMER 60</button>
+                <button id="timerStartButton180" class="mx-8 px-8 py-4 rounded-md my-auto border-8 border-solid text-slate-50 shadow-inner transition ease-in delay-100 hover:-translate-y-1 hover:scale-110 duration-200 text-2xl font-bold hidden" onclick="SetTimer(180)">TIMER 180</button>
+                <button id="cross" class="flex text-slate-50 font-black text-2xl inline-block align-text-top hidden" onclick="CloseTimers()">X</button>
+            </div>
+            <div id="timerCountHidden" class="text-center"></div>
+            <div>
+                <button class="mx-8 px-8 py-4 rounded-md my-auto border-8 border-solid text-slate-50 shadow-inner transition ease-in delay-100 hover:-translate-y-1 hover:scale-110 duration-200 text-2xl font-bold" onclick="displayPokemon()">ROLL</button>
+            </div>
         </div>
     </div>
     </body>
