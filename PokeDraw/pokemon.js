@@ -28,7 +28,7 @@ async function displayPokemon() {
     
     document.getElementById("nom-Pokemon").innerText = " ";
     document.getElementById("plus-Mid-Text").innerText = " ";
-    document.getElementById("timerCountHidden").innerText = " ";
+    //document.getElementById("timerCountHidden").innerText = " ";
        
     let pokemon = document.createElement("div");
     
@@ -45,22 +45,33 @@ async function displayPokemon() {
 
     getAdjectif(getRandomAdjectifNumber(maxAdj));
 
-     // Retire Hidden des TimersButtons 
-     let timerButton30 = document.getElementById("timerStartButton30");
-     timerButton30.classList.remove("hidden"); 
- 
-     let timerButton60 = document.getElementById("timerStartButton60");
-     timerButton60.classList.remove("hidden"); 
- 
-     let timerButton180 = document.getElementById("timerStartButton180");
-     timerButton180.classList.remove("hidden"); 
-
-     let cross = document.getElementById("cross");
-     cross.classList.remove("hidden")
-
+    CloseTimers();
+    //StopTimer();
      
 
 } 
+
+
+
+
+function ShowTimers() {
+// Retire Hidden des TimersButtons 
+    let timerButton30 = document.getElementById("timerStartButton30");
+    timerButton30.classList.remove("hidden"); 
+
+    let timerButton60 = document.getElementById("timerStartButton60");
+    timerButton60.classList.remove("hidden"); 
+
+    let timerButton180 = document.getElementById("timerStartButton180");
+    timerButton180.classList.remove("hidden"); 
+
+    let cross = document.getElementById("cross");
+    cross.classList.remove("hidden")
+
+    let timerButton = document.getElementById("timerButton");
+    timerButton.classList.add("hidden");
+
+}
 
 function CloseTimers(){
     let timerButton30 = document.getElementById("timerStartButton30");
@@ -74,7 +85,12 @@ function CloseTimers(){
 
      let cross = document.getElementById("cross");
      cross.classList.add("hidden")
+
+     let timerButton = document.getElementById("timerButton");
+     timerButton.classList.remove("hidden");
 }
+
+
 
 function SetTimer(departMinutes) {
     
@@ -92,15 +108,23 @@ function SetTimer(departMinutes) {
     let cross = document.getElementById("cross");
     cross.classList.add("hidden");
 
+    let closeButton = document.getElementById("closeTimerButton");
+    closeButton.classList.remove("hidden");
+
+    document.getElementById("rollButton").classList.add("hidden");
+
     clearInterval(nIntervalId);
 
     const delay = 1000;
 
     timerDisplay = document.createElement("div");
     timerDisplay.id = "timer";
-    timerDisplay.className = "font-black text-6xl text-slate-50 hidden";
-    document.getElementById("timerCountHidden").appendChild(timerDisplay);
-
+    timerDisplay.className = "font-black text-6xl text-slate-50";
+    timerDisplay.innerText = departMinutes + ":00";
+    // Changer l'ElementById par la div qui accueil le display du Timer
+    document.getElementById("timerDisplayer").append(timerDisplay);
+    
+    
     
     nIntervalId = setInterval(() => {
         let minutes = parseInt(temps / 60, 10);
@@ -113,7 +137,19 @@ function SetTimer(departMinutes) {
     }, delay)
 
 
-    document.getElementById("timer").classList.remove("hidden");    
+    //document.getElementById("timer").classList.remove("hidden");    
+}
+
+
+
+function StopTimer() {
+    clearInterval(nIntervalId);
+    // Vider la div qui accueil le display du timer
+    document.getElementById("timerDisplayer").innerText = " ";
+    document.getElementById("timerButton").classList.remove("hidden");
+    document.getElementById("closeTimerButton").classList.add("hidden");
+    // On cache le bouton de roll
+    document.getElementById("rollButton").classList.remove("hidden");
 }
 
 
