@@ -1,4 +1,4 @@
-// Appel JSON
+
 let adjectif = null;
 let maxAdj = 0;
 
@@ -28,7 +28,6 @@ async function displayPokemon() {
     
     document.getElementById("nom-Pokemon").innerText = " ";
     document.getElementById("plus-Mid-Text").innerText = " ";
-    //document.getElementById("timerCountHidden").innerText = " ";
        
     let pokemon = document.createElement("div");
     
@@ -46,7 +45,6 @@ async function displayPokemon() {
     getAdjectif(getRandomAdjectifNumber(maxAdj));
 
     CloseTimers();
-    //StopTimer();
      
 
 } 
@@ -55,7 +53,6 @@ async function displayPokemon() {
 
 
 function ShowTimers() {
-// Retire Hidden des TimersButtons 
     let timerButton30 = document.getElementById("timerStartButton30");
     timerButton30.classList.remove("hidden"); 
 
@@ -121,7 +118,6 @@ function SetTimer(departMinutes) {
     timerDisplay.id = "timer";
     timerDisplay.className = "font-black text-6xl text-slate-50";
     timerDisplay.innerText = departMinutes + ":00";
-    // Changer l'ElementById par la div qui accueil le display du Timer
     document.getElementById("timerDisplayer").append(timerDisplay);
     
     
@@ -137,18 +133,15 @@ function SetTimer(departMinutes) {
     }, delay)
 
 
-    //document.getElementById("timer").classList.remove("hidden");    
 }
 
 
 
 function StopTimer() {
     clearInterval(nIntervalId);
-    // Vider la div qui accueil le display du timer
     document.getElementById("timerDisplayer").innerText = " ";
     document.getElementById("timerButton").classList.remove("hidden");
     document.getElementById("closeTimerButton").classList.add("hidden");
-    // On cache le bouton de roll
     document.getElementById("rollButton").classList.remove("hidden");
 }
 
@@ -176,7 +169,6 @@ async function getAdjectif(num) {
 }
 
 
-// RANDOM FUNCTION
 
 function getRandomPokeNumber(max) {
     pokemonNumber = Math.floor(Math.random() * max);
