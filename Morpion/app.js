@@ -28,8 +28,6 @@ app.get('/games/tic-tac-toe', (req, res) => {
 });
 
 
-
-
 http.listen(port, () => {
     console.log(`Listening on http://localhost:${port}`);
 });
@@ -78,6 +76,14 @@ io.on('connection', (socket) =>{
 
     socket.on('play', (player) => {
         io.to(player.roomId).emit('play', player);
+    })
+
+    socket.on('play again', (roomId) => {
+        const room = rooms.find(r => r.id === roomId);
+
+        if (room && room.players.length === 2) {
+            io.to(room.id).emit('play again', room.players);
+        }
     })
 
     socket.on('disconnect', () => {

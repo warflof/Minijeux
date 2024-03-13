@@ -11,6 +11,14 @@ const player = {
 
 const socket = io();
 
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const roomId = urlParams.get('room');
+
+if (roomId) {
+    document.getElementById('start').innerText = "Rejoindre";
+}
+
 const usernameInput = document.getElementById('username');
 
 const gameCard = document.getElementById('game-card');
@@ -61,8 +69,14 @@ $("#form").on(`submit`, function(e) {
 
     player.username = usernameInput.value;
     
-    player.host = true;
-    player.turn = true;
+    if (roomId) {
+        player.roomId = roomId;
+    } else {
+        player.host = true;
+        player.turn = true;
+    }
+
+  
     player.socketId = socket.id;
 
     userCard.hidden = true;
@@ -86,6 +100,11 @@ $('.cell').on("click", function (e) {
     }
 });
 
+$('#restart').on("click", function(e) {
+    restartGame();
+})
+
+
 socket.on('join room', (roomId) => {
     player.roomId = roomId;
     linkToShare.innerHTML = `<a href="${window.location.href}?room=${player.roomId}" target="_blank">${window.location.href}?room=${player.roomId}</a>`;
@@ -105,11 +124,13 @@ socket.on('play', (enemyPlayer) => {
         if(enemyPlayer.win) {
             SetTurnMessage('alert-info', 'alert-danger', `C'est perdu! <b>${enemyPlayer.username}</b> a gagné !`);
             calculateWin(enemyPlayer.playedCell, 'O');
+            showRestartArea();
             return;
         }
 
         if(calculateEquality()) {
             SetTurnMessage('alert-info', 'alert-warning', `C'est une égalité !`);
+            //showRestartArea();
             return;
         }
 
@@ -119,11 +140,13 @@ socket.on('play', (enemyPlayer) => {
     }  else {
         if(player.win) {
             $("#turn-message").addClass('alert-success').html("Félicitations, tu as gagné la partie !");
+            showRestartArea();
             return;
         } 
 
         if(calculateEquality()) {
             SetTurnMessage('alert-info', 'alert-warning', `C'est une égalité !`);
+            showRestartArea();
             return;
         }
 
@@ -131,6 +154,10 @@ socket.on('play', (enemyPlayer) => {
         player.turn = false;
     }
 })
+
+socket.on('play again', (players) => {
+    restartGame(players);
+}) 
 
 function startGame(players) {
     restartArea.classList.add('d-none');
@@ -146,6 +173,39 @@ function startGame(players) {
         SetTurnMessage('alert-info','alert-success', "C'est ton tour de jouer");
     } else {
         SetTurnMessage('alert-success','alert-info', `C'est au tour de <b>${enemyPlayer.username}</b> de jouer`);
+    }
+}
+
+function restartGame(players = null) {
+    
+    if(player.host && !players) {
+        player.turn = true;
+        socket.emit('play again', player.roomId);
+    }
+
+    const cells = document.getElementsByClassName('cell');
+
+    for (const cell of cells) {
+        cell.innerHTML = '';
+        cell.classList.remove('win-cell', 'text-danger');
+    }
+
+    turnMessage.classList.remove('alert-warning', 'alert-danger');
+
+    if(!player.host) {
+        player.turn = false;
+    }
+
+    player.win = false;
+
+    if(players) {
+        startGame(players);
+    }
+}
+
+function showRestartArea() {
+    if(player.host) {
+        restartArea.classList.remove('d-none');
     }
 }
 
